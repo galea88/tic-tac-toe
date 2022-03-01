@@ -1,13 +1,13 @@
-export const computerPlay = (board) => {
+export const computerPlay = (currentBoard) => {
 
 let computerIndex = Math.floor(Math.random()*8);
 let played = false;
 
 while(played == false){   
     
-    if(board[computerIndex].id == null){
+    if(currentBoard[computerIndex].id == null){
       
-        board[computerIndex] = {id: 1, name: "Computer", icon: "O"};
+        currentBoard[computerIndex] = {id: 1, name: "Computer", icon: "O"};
         played = true;
        
     }else{
@@ -18,6 +18,6 @@ while(played == false){
 
 }
 
-return board;
+return currentBoard;
 
 }

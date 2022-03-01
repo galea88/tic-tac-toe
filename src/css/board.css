@@ -1,12 +1,14 @@
-.col {
+.col-2 {
     position: relative;
-    height: 200px;
-    width: 200px;
+    height: 100px;
+    width: 100px;
     border: 2px solid black;
     font-size: 70px;
+    background-color: #32cd32;
+    color: white;
 }
   
-.col>span {
+.col-2>span {
     margin: 0;
     position: absolute;
     top: 50%;

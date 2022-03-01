@@ -8,21 +8,34 @@ function Board(props){
     
     const [board, setBoard] = useState(new Array(9).fill({id: null}));
 
-    //console.log(board);
+    useEffect(() => {
 
-    if(props.playerTurn == 1){
-        
-        let newBoard = computerPlay(board);
-        console.log(newBoard);
-        props.setPlayerTurn(0);  
-        //setBoard(board)       
-
-    }
+        if(props.playerTurn == 1){
     
-    //checkForWin(board);
+            let currentBoard = board;
+            
+            let newBoard = computerPlay(currentBoard);
+                     
+            setBoard(newBoard)  
+            props.setPlayerTurn(0);    
+                        
+        }
 
+        let winCheck = checkForWin(board);
+
+        if(winCheck.won){ props.setGameStatus({status: "finished", reason: winCheck.reason}); }
+
+
+    })    
+   
     return (
     <div className="container">
+        {(props.gameStatus.status === "finished") ? 
+            <div className="row text-center">
+            <h1>{props.gameStatus.reason}</h1>
+            </div> : ""        
+        }
+        
         <div className="row">
             <Spaces player={props} board={board} setBoard={setBoard} id={0} />
             <Spaces player={props} board={board} setBoard={setBoard} id={1} />

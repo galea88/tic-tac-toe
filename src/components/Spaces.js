@@ -2,16 +2,14 @@ import {useState} from 'react';
 
 function Spaces (props){
 
-    const [space, setSpace] = useState({id: props.id});
-    const [player, setPlayer] = useState(null);    
+    const [space, setSpace] = useState({id: props.id});   
 
     const handleClick = () => {  
-            
+           
         if(props.player.playerTurn === 0){
 
-            if(!player){            
+            if(props.board[props.id].id == null ){        
             
-            setPlayer(props.player.allPlayers[props.player.playerTurn])
             let board = props.board;
                 board[props.id] = props.player.allPlayers[props.player.playerTurn];
             
@@ -20,27 +18,13 @@ function Spaces (props){
                         
             }
 
-        }
-        // else{ 
-
-        //     if(!player){
-            
-        //     props.player.setPlayerTurn(0); 
-        //     setPlayer(props.player.allPlayers[props.player.playerTurn]) 
-        //     let board = props.board;
-        //         board[props.id] = props.player.allPlayers[props.player.playerTurn];
-           
-        //     props.setBoard(board) 
-            
-        //     }
-
-        // } 
+        }        
 
     } 
 
     return(
         <>                                  
-            <div className="col text-center" onClick={() => (props.player.playerTurn === 0) ? handleClick(): ""}><span className="align-middle">{(player) ? player.icon : ""}</span></div>
+            <div className="col-2 m-1 text-center" onClick={() => (props.player.playerTurn === 0) ? handleClick(): ""}><span className="align-middle">{(props.board[props.id]) ? props.board[props.id].icon : ""}</span></div>
         </>
         
     )

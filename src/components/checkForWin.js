@@ -25,8 +25,8 @@ export function checkForWin(board){
         
         if(play !== null && (play === play2 && play === play3)){
             
-            alert(board[x].name+" won!");
-            return;
+            //alert(board[x].name+" won!");
+            return {"won": true, "reason": `${board[x].name} won the game.`};
 
         }
 
@@ -49,8 +49,8 @@ export function checkForWin(board){
        
         if(play !== null && (play === play2 && play === play3)){
             
-            alert(board[x].name+" won!");
-            return;
+            //alert(board[x].name+" won!");
+            return {"won": true, "reason": `${board[x].name} won the game.`};
 
         }
 
@@ -68,14 +68,15 @@ export function checkForWin(board){
        
         if(play !== null && (play === play2 && play === play3)){
             
-            alert(board[x].name+" won!");
-            return;
+            //alert(board[x].name+" won!");
+            return {"won": true, "reason": `${board[x].name} won the game.`};
 
         }
 
 
     }
 
-  return board;  
+  //return board;  
+  return {"won": false};
 
 }
