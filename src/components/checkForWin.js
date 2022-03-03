@@ -1,4 +1,4 @@
-export function checkForWin(board){
+export function checkForWin(board){   
 
     for(let x=0;x < board.length;x++){
 
@@ -25,7 +25,6 @@ export function checkForWin(board){
         
         if(play !== null && (play === play2 && play === play3)){
             
-            //alert(board[x].name+" won!");
             return {"won": true, "reason": `${board[x].name} won the game.`};
 
         }
@@ -49,7 +48,6 @@ export function checkForWin(board){
        
         if(play !== null && (play === play2 && play === play3)){
             
-            //alert(board[x].name+" won!");
             return {"won": true, "reason": `${board[x].name} won the game.`};
 
         }
@@ -68,15 +66,16 @@ export function checkForWin(board){
        
         if(play !== null && (play === play2 && play === play3)){
             
-            //alert(board[x].name+" won!");
             return {"won": true, "reason": `${board[x].name} won the game.`};
 
         }
 
-
     }
 
-  //return board;  
-  return {"won": false};
+    //CHECK FOR DRAW  
+    if(board.filter(item => item.id === null).length === 0){
+    return {"won": true, "reason": "It is a Draw."}; 
+    }else{ return {"won": false}; }  
+
 
 }

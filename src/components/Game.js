@@ -1,6 +1,7 @@
 import {useState} from 'react';
 import Board from './Board.js';
-import Players from './Players.js';
+import Welcome from './Welcome.js';
+import Icon from '../images/tic-tac-toe.png';
 
 function Game(){
 
@@ -9,9 +10,16 @@ function Game(){
     const [players, setPlayers] = useState([{id: 0, name: "Player 1", icon: "X"}, {id: 1, name: "Computer", icon: "O"}]);        
 
     return (
-    <>       
-        <Board allPlayers={players} playerTurn={playerTurn} setPlayerTurn={setPlayerTurn} gameStatus={gameStatus} setGameStatus={setGameStatus} />
-    </>
+    <div className="container"> 
+        <div className="row mt-5">
+            <div className="col py-3 d-flex justify-content-center">
+                <img height={100} width={100} src={Icon} />                
+            </div>
+        </div>        
+        {
+            (gameStatus.status === "pending") ? <Welcome setGameStatus={setGameStatus} /> : <Board allPlayers={players} playerTurn={playerTurn} setPlayerTurn={setPlayerTurn} gameStatus={gameStatus} setGameStatus={setGameStatus} />
+        }        
+    </div>
     )   
 
 }
